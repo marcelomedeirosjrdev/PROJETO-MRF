@@ -3,6 +3,7 @@ const product = menuOptions
 
 const showAll = document.querySelector('.show-all')
 const showMap = document.querySelector('.show-map')
+const showReduce = document.querySelector('.show-reduce')
 
 
 function render() {
@@ -32,7 +33,7 @@ function buttonShowAll() {
 function buttonShowMap() {
 
 
-    product.map((productmap) => {
+     product.map((productmap) => {
 
         productmap.price = (productmap.price * 0.9)
         return productmap
@@ -44,6 +45,21 @@ function buttonShowMap() {
 
 }
 
+function buttonShowReduce(){
+
+    product.reduce(  (acc, productReduce) => {
+       
+       
+        
+        return productReduce.price = acc + productReduce.price
+  
+    },0)
+ 
+
+  render()
+}
+
+
 
 
 
@@ -52,4 +68,5 @@ function buttonShowMap() {
 
 showAll.addEventListener('click', buttonShowAll)
 showMap.addEventListener('click', buttonShowMap)
+showReduce.addEventListener('click', buttonShowReduce)
 
