@@ -5,10 +5,10 @@ const showAll = document.querySelector('.show-all')
 const showMap = document.querySelector('.show-map')
 const showReduce = document.querySelector('.show-reduce')
 
-
+let myLi = ''
 function render() {
 
-    let myLi = ''
+    myLi = ''
 
     product.forEach(item => {
 
@@ -17,8 +17,10 @@ function render() {
         <li>
             <img src=${item.src}>
             <p>${item.name}</p>
-            <p class="item-price">${item.price.toFixed(2)}</p>
+            <p class="item-price" >R$ ${item.price.toFixed(2)}</p>
         </li>
+
+        
 `
 
     });
@@ -33,31 +35,37 @@ function buttonShowAll() {
 function buttonShowMap() {
 
 
-     product.map((productmap) => {
+    product.map((productmap) => {
 
         productmap.price = (productmap.price * 0.9)
+
         return productmap
 
 
-        
+
+
+
     })
-     render()
+
+    render()
+
 
 }
 
-function buttonShowReduce(){
+function buttonShowReduce() {
 
-    product.reduce(  (acc, productReduce) => {
-       
-       
-        
-        return productReduce.price = acc + productReduce.price
-  
-    },0)
- 
+    const totalBurgers = menuOptions.reduce((acc, burger) => acc + burger.price, 0);
 
-  render()
-}
+    list.innerHTML = `
+<p id="total">O valor total de Hamburgueres: R$${totalBurgers}</p>`;
+
+};
+
+
+
+
+
+
 
 
 
