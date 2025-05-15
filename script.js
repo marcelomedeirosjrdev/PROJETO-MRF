@@ -4,6 +4,7 @@ const product = menuOptions
 const showAll = document.querySelector('.show-all')
 const showMap = document.querySelector('.show-map')
 const showReduce = document.querySelector('.show-reduce')
+const veganFilter = document.querySelector('.filter-vegan')
 
 let myLi = ''
 function render(productsToRender = product) {
@@ -59,10 +60,18 @@ function buttonShowReduce() {
 
 };
 
+function buttonFilterVegan(){
+    const veganFilter = menuOptions.filter((product)=> product.vegan === true )
+
+    render(veganFilter)
+
+   
+}
 
 
 
 showAll.addEventListener('click', buttonShowAll)
 showMap.addEventListener('click', buttonShowMap)
 showReduce.addEventListener('click', buttonShowReduce)
+veganFilter.addEventListener('click', buttonFilterVegan)
 
