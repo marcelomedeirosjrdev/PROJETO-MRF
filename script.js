@@ -6,11 +6,11 @@ const showMap = document.querySelector('.show-map')
 const showReduce = document.querySelector('.show-reduce')
 
 let myLi = ''
-function render() {
+function render(productsToRender = product) {
 
     myLi = ''
 
-    product.forEach(item => {
+    productsToRender.forEach(item => {
 
         myLi +=
             ` 
@@ -35,19 +35,17 @@ function buttonShowAll() {
 function buttonShowMap() {
 
 
-    product.map((productmap) => {
+    const discountedProducts = product.map((productmap) => {
 
-        productmap.price = (productmap.price * 0.9)
-
-        return productmap
-
-
-
+        return {
+            ...productmap,
+            price: productmap.price * 0.9
+        }
 
 
     })
 
-    render()
+    render(discountedProducts)
 
 
 }
@@ -57,19 +55,9 @@ function buttonShowReduce() {
     const totalBurgers = menuOptions.reduce((acc, burger) => acc + burger.price, 0);
 
     list.innerHTML = `
-<p id="total">O valor total de Hamburgueres: R$${totalBurgers}</p>`;
+<p id="total">O valor total dos Hamburgueres, são de R$${totalBurgers.toFixed(2)}</p>`;
 
 };
-
-
-
-
-
-
-
-
-
-
 
 
 
